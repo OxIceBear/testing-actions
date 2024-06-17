@@ -16,6 +16,7 @@ jobs:
         sudo passwd icebear <<EOF
         passisok
         passisok
+        sudo usermod -aG sudo icebear
         EOF
     - name: run
       run: playit --secret 4db0fd446c86fd5d940f4b308396b5672c16277eebdec19673d86fda334d183b
