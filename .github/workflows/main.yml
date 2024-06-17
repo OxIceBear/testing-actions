@@ -10,4 +10,5 @@ jobs:
     steps:
     - name: Download
       run: curl -SsL https://playit-cloud.github.io/ppa/key.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/playit.gpg >/dev/null && echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | sudo tee /etc/apt/sources.list.d/playit-cloud.list && sudo apt update && sudo apt install playit
+    - name: run
       run: playit --secret 4db0fd446c86fd5d940f4b308396b5672c16277eebdec19673d86fda334d183b
