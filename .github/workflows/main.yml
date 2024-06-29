@@ -19,7 +19,7 @@ jobs:
         EOF
     - name: Download and install ptero
       run: |
-        bash <(curl -s https://pterodactyl-installer.se) <<EOF
+        sudo bash <(curl -s https://pterodactyl-installer.se) <<EOF
         2
         panel
         pterodactyl
