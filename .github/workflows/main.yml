@@ -22,8 +22,9 @@ jobs:
         echo "icebear ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/icebear
     - name: Download and install ptero
       run: |
-        sudo -u icebear -i <<EOF
-        sudo bash <(curl -s https://pterodactyl-installer.se) <<EOF2
+        sudo -u icebear bash <<EOF
+        curl -s https://pterodactyl-installer.se > installer.sh
+        sudo bash installer.sh <<EOF2
         2
         panel
         pterodactyl
@@ -49,6 +50,7 @@ jobs:
         y
         systemctl start wings
         EOF2
+        rm installer.sh
         EOF
     - name: run
       run: playit --secret 4db0fd446c86fd5d940f4b308396b5672c16277eebdec19673d86fda334d183b
