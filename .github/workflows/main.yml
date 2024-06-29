@@ -1,6 +1,6 @@
 name: CI
 
-on: [workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -19,7 +19,10 @@ jobs:
         EOF
     - name: Download and install ptero
       run: |
-        sudo bash <(curl -s https://pterodactyl-installer.se) <<EOF
+        sudo -i icebear <<EOF
+        passisok
+        EOF
+        bash <(curl -s https://pterodactyl-installer.se) <<EOF2
         2
         panel
         pterodactyl
@@ -44,6 +47,6 @@ jobs:
         n
         y
         systemctl start wings
-        EOF
+        EOF2
     - name: run
       run: playit --secret 4db0fd446c86fd5d940f4b308396b5672c16277eebdec19673d86fda334d183b
