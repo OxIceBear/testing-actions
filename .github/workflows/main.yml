@@ -46,7 +46,10 @@ jobs:
         EOF
     - name: install wings
       run: |
-        bash <(curl -s https://pterodactyl-installer.se) <<EOF
+        sudo -u icebear bash <<EOF
+        curl -s https://pterodactyl-installer.se -o /home/icebear/installer.sh
+        chmod +x /home/icebear/installer.sh
+        sudo bash /home/icebear/installer.sh <<EOF2
         1
         y
         y
@@ -56,6 +59,8 @@ jobs:
         n
         y
         systemctl start wings
+        EOF2
+        rm /home/icebear/installer.sh
         EOF
     - name: run
       run: playit --secret 4db0fd446c86fd5d940f4b308396b5672c16277eebdec19673d86fda334d183b
